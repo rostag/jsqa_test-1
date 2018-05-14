@@ -26,7 +26,7 @@ console.log('\nLesson 04 - Start');
 
 a = new Array('banana', 'cherry', 'apple').sort().join(', ');
 
-console.log( a );
+console.log(a);
 
 // Для сортування в якому-небудь іншому порядку, відмінному від алфавітного, 
 // можна передати методу sort() як аргумент функцію порівняння. 
@@ -43,7 +43,7 @@ a = [33, 4, 1111, 222];
 
 // 1. 33, 4 -> 29 => 4, 33
 // 2. 4, 1111 -> -1107 => 4, 1111
-function aLessThanB (a, b) {
+function aLessThanB(a, b) {
 	// var result = 0;
 	// if ( a < b ) {
 	// 	result = -1;
@@ -56,16 +56,16 @@ function aLessThanB (a, b) {
 	return a - b;
 }
 
-function bLessThanA (a, b) {
+function bLessThanA(a, b) {
 	return b - a;
 }
 
 // Comparator Function
-a.sort( aLessThanB );
-console.log( 'sorted by aLessThanB = ' + a );
+a.sort(aLessThanB);
+console.log('sorted by aLessThanB = ' + a);
 
-a.sort( bLessThanA );
-console.log( 'sorted by bLessThanA = ' + a );
+a.sort(bLessThanA);
+console.log('sorted by bLessThanA = ' + a);
 
 // 
 // Array.concat()
@@ -77,23 +77,23 @@ console.log( 'sorted by bLessThanA = ' + a );
 // Якщо який-небудь з цих аргументів сам є масивом, 
 // в результуючий масив додаються його елементи.
 var nums = [1, 2];
-function trace( arr ) {
-	console.log('Array = ', arr );
+function trace(arr) {
+	console.log('Array = ', arr);
 }
 
 a = a.concat(795, 796);
 
 trace();
 
-a = a.concat('HELLO', nums, nums, a.sort( aLessThanB ));
+a = a.concat('HELLO', nums, nums, a.sort(aLessThanB));
 
 trace();
 
-var f = [1,2,3];
+var f = [1, 2, 3];
 f.concat(4, 5); // [1,2,3,4,5]
-f.concat([4,5]); // [1,2,3,4,5]
-f.concat([4,5],[6,7]); // [1,2,3,4,5,6,7]
-f.concat(4, [5,[6,7]]) // [1,2,3,4,5,[6,7]]
+f.concat([4, 5]); // [1,2,3,4,5]
+f.concat([4, 5], [6, 7]); // [1,2,3,4,5,6,7]
+f.concat(4, [5, [6, 7]]) // [1,2,3,4,5,[6,7]]
 
 // 
 // Array.slice(start, end) - відрізати скибку
@@ -112,17 +112,17 @@ f.concat(4, [5,[6,7]]) // [1,2,3,4,5,[6,7]]
 // Так, аргумент, рівний -1, задає останній елемент масиву, 
 // а аргумент, рівний -3, - третій елемент масиву з кінця.
 
-var d = [1,2,3,4,5];
-var dd = d.slice(0,3); // [1,2,3]
+var d = [1, 2, 3, 4, 5];
+var dd = d.slice(0, 3); // [1,2,3]
 var ddd = d.slice(3); // [4,5]
-var dddd = d.slice(1,-1); // [2,3,4]
-var ddddd = d.slice(-3,-2); // [3]
+var dddd = d.slice(1, -1); // [2,3,4]
+var ddddd = d.slice(-3, -2); // [3]
 
-trace( d );
-trace( dd );
-trace( ddd );
-trace( dddd );
-trace( ddddd );
+trace(d);
+trace(dd);
+trace(ddd);
+trace(dddd);
+trace(ddddd);
 
 // 
 // Array.splice(startIndex, quantity, elementsToAdd) - з'єднання, або зрощування масивів
@@ -148,42 +148,42 @@ trace( ddddd );
 // які задають елементи, які будуть вставлені в масив, починаючи з позиції, 
 // заданої першим аргументом.
 
-function p ( s ) {
+function p(s) {
 	console.log(s);
 }
 
 p('----------------SPLICE-----------------');
 
 // Тільки відняти елементи
-var e = [1,2,3,4,5,6,7,8];
-trace( e );
+var e = [1, 2, 3, 4, 5, 6, 7, 8];
+trace(e);
 
 var ee = e.splice(4); // [5,6,7,8], equal [1,2,3,4]
 
-trace( ee );
-trace( e );
+trace(ee);
+trace(e);
 
-var eee = e.splice(1,2); // [2,3], equal [1,4]
+var eee = e.splice(1, 2); // [2,3], equal [1,4]
 
-trace( eee );
-trace( e );
+trace(eee);
+trace(e);
 
-var eeee = e.splice(1,1); // [4], equal [1]
+var eeee = e.splice(1, 1); // [4], equal [1]
 
-trace( eeee );
-trace( e );
+trace(eeee);
+trace(e);
 
 // Тільки додати елементи
 var eeeee = e.splice(0, 0, 101, 102, 103);
 
-trace( eeeee );
-trace( e );
+trace(eeeee);
+trace(e);
 
 // І відняти, і додати
 var eeeeee = e.splice(1, 1, 'A', 'B', 'C');
 
-trace( eeeeee );
-trace( e );
+trace(eeeeee);
+trace(e);
 
 // e.splice(2,0,'a','b'); // [], equal [1,2,'a','b',3,4,5]
 // e.splice(2,2,[1,2],3); // ['a','b'], equal [1,2,[1,2],3,3,4,5]
@@ -198,23 +198,23 @@ trace( e );
 // видаляє останній елемент масиву, зменшує довжину масиву і повертає видалений елемент. 
 // Зверніть увагу: обидва ці методи змінюють масив на місці, а не створюють його модифіковану копію.
 
-p( '----------- PUSH -----------');
+p('----------- PUSH -----------');
 
 var eLength = e.length;
 
-p( eLength );
+p(eLength);
 
 var eLength = e.push('1001');
 
-p( eLength );
+p(eLength);
 
-trace( e );
+trace(e);
 
 var poppedOut = e.pop();
 
-p( '----------- POP -----------');
+p('----------- POP -----------');
 
-p( poppedOut );
+p(poppedOut);
 
 // 
 // Array.unshift() і Array.shift() - зсув вліво
@@ -225,7 +225,7 @@ p( poppedOut );
 // Array.unshift() вставляє елемент на початку і повертає нову довжину масиву.
 // Array.shift() виштовхує елемент з початку масиву і повертає цей елемент.
 
-var primes = [1,3,5,7,11];
+var primes = [1, 3, 5, 7, 11];
 
 a = primes.shift(); // pop виштовхує з кінця, а цей - з початку
 
@@ -253,8 +253,8 @@ console.log(primes); // [3,5,7,11]
 // Перетворює кожен з елементів масиву на рядок, викликаючи в разі необхідності методи toString() 
 // для елементів масиву і виводить список цих рядків через кому.
 
-console.log( [1,2,3].toString() );
-console.log( [1,2,3] );
+console.log([1, 2, 3].toString());
+console.log([1, 2, 3]);
 
 
 // 
@@ -338,7 +338,7 @@ for (i = 0; i < data.length; i++) {
 // (а[0], а[5], а[78]), то результуючий масив матиме точно такий же вигляд (b[0], b[5], b[78])
 
 var a = [1, 2, 3];
-var b = a.map(function(x) {
+var b = a.map(function (x) {
 	return x * x * x;
 });
 
@@ -367,7 +367,7 @@ p(b);
 // Як і у випадку з Array.map() ми отримуємо на виході новий масив, старий не змінюється.
 
 a = [5, 4, 3, 2, 1];
-var smallvalues = a.filter(function(element) {
+var smallvalues = a.filter(function (element) {
 	return element < 3;
 }); // [2, 1]
 
@@ -396,13 +396,13 @@ p(everyOtherInCube);
 // 
 // 
 
-noSpacesPlease = function(element) {
+noSpacesPlease = function (element) {
 	return element !== ' ';
 }
 
 var a = 'Як і у випадку з Array.map() ми отримуємо на виході новий масив'.split('');
 var b = a.filter(noSpacesPlease).join('');
-var c = a.filter(function(element,index) {
+var c = a.filter(function (element, index) {
 	return index % 3 === 0;
 })
 
@@ -416,13 +416,13 @@ var c = a.filter(function(element,index) {
 // повернула true після всіх викликів дял кожного елемента.
 
 var ar = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-var everyArrayElementIsLessThanTen = ar.every(function(value) {
+var everyArrayElementIsLessThanTen = ar.every(function (value) {
 	return value < 10;
 }); // true, всі значення менші з 10
 
 p(everyArrayElementIsLessThanTen);
 
-var everyArrayElementIsEven = ar.every(function(x) {
+var everyArrayElementIsEven = ar.every(function (x) {
 	return x % 2 === 0;
 }); // => false: бо не всі парні
 
@@ -432,7 +432,7 @@ p(everyArrayElementIsEven);
 
 a = [1, 2, 3, 4, 5];
 
-var someArrayElementIsEven = a.some(function(x) {
+var someArrayElementIsEven = a.some(function (x) {
 	return x % 2 === 0;
 }); // => true — бо є деякі парні числа.
 
@@ -450,7 +450,7 @@ p(someArrayElementIsEven);
 a = [1, 2, 3, 4, 5];
 
 // Сума
-var sum = a.reduce(function(previousResult, currentElement) {
+var sum = a.reduce(function (previousResult, currentElement) {
 	return previousResult + currentElement;
 }, 0);
 
@@ -463,20 +463,20 @@ p(sum);
 // Крок 2: x = 9, y = ar[1] = 1; x + y = 10;
 
 // Продукт (множення)
-var product = a.reduce(function(x, y) {
+var product = a.reduce(function (x, y) {
 	return x * y;
 }, 1);
 
 // Homework
 
 // Найбільше
-var max = a.reduce(function(x, y) {
+var max = a.reduce(function (x, y) {
 	return (x > y) ? x : y;
 });
 
 var ar = [4, 3, 2, 1];
 
-var result = ar.reduce(function(x, y) {
+var result = ar.reduce(function (x, y) {
 	return x + y;
 }, 0);
 
@@ -523,16 +523,46 @@ console.log('\nLesson 04 - Homework');
 
 
 
-console.log('\nTask 04.01'); 
+console.log('\nTask 04.01');
 // Points: 1
 // Прочитай файл уроку. Створи новий масив primeNumbers, що складається з перших десяти простих чисел. 
 // Використай метод push, щоб додати до масиву ще одне просте число.
 // TODO: пиши код тут:
 
-let primeNumbers;
+let primeNumbers = [];
+// for(var num in primeNumbers) {
+// 	primeNumbers[num] = num;
+// }
 
+Array.prototype.GetPrimeNumbers = function (length) { //Modifies original array.
+	//if (Array.isArray(input)) {
+		length = length || 10;
+		let simple = function (numbers) {
+			for (var i = 2; i < numbers; i++) {//i=2 - first prime numbers
+				if (numbers % i === 0) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		switch (length) {
+			case 1: { this.push(1); break };
+			case 2: this.push(1, 3); { break };
+			default: {
+				this.push(1, 3);
+				var number = 3;
+				for (let iter = 2; iter < length; iter++) {
+					do { number++; } while (!simple(number))
+					this.push(number);
+				}
+			};
+		}
+		return true;
+};
+primeNumbers.GetPrimeNumbers();
 // Цей код тестує завдання:
-if (primeNumbers && primeNumbers.length === 10) {
+if (primeNumbers && primeNumbers.length === 11) {
 	console.log('Task 04.01 is DONE! ');
 } else {
 	console.log('Please make Task 04.01');
@@ -540,7 +570,7 @@ if (primeNumbers && primeNumbers.length === 10) {
 
 
 
-console.log('\nTask 04.02'); 
+console.log('\nTask 04.02');
 // Points: 2
 // Напиши функцію sortNumbers і використай її у методі sort масиву primeNumbers для того, 
 // щоб відсортувати його елементи у зворотньому порядку.
@@ -556,7 +586,7 @@ if (primeNumbers && primeNumbers[0] && primeNumbers[0] === 29) {
 
 
 
-console.log('\nTask 04.03'); 
+console.log('\nTask 04.03');
 // Points: 2
 // За допомогою методу splice виріж з масиву елементи з другого по третій і при цьому заміни їх на рядок 'foo'.
 // TODO: пиши код тут:
@@ -584,7 +614,7 @@ console.log('Please make Task 04.04');
 console.log('\nTask 04.05');
 // Points: 3
 // Дано масив crazyMix, до якого увійшли елементи різних типів:
-var crazyMix = [1, '1', true, 2, '02', 3, '0', '10', 11, [], {}, function() {}];
+var crazyMix = [1, '1', true, 2, '02', 3, '0', '10', 11, [], {}, function () { }];
 
 // Використай метод Array.filter у функції arrayCleanUp так,
 // щоб вона повертала масив, до якого входять тільки числа з вхідного масиву 'arrayToCleanUp':
@@ -595,8 +625,8 @@ function arrayCleanUp(arrayToCleanUp) {
 	return cleanedUp;
 }
 
-var cleanedUp = arrayCleanUp(crazyMix).every(function(element) {
-	return typeof element === 'number';
+var cleanedUp = arrayCleanUp(crazyMix).every(function (element) {
+	return typeof element === 'numbers';
 });
 
 // Цей код тестує завдання:
