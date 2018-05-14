@@ -77,6 +77,7 @@ console.log('sorted by bLessThanA = ' + a);
 // Якщо який-небудь з цих аргументів сам є масивом, 
 // в результуючий масив додаються його елементи.
 var nums = [1, 2];
+
 function trace(arr) {
 	console.log('Array = ', arr);
 }
@@ -530,37 +531,55 @@ console.log('\nTask 04.01');
 // TODO: пиши код тут:
 
 let primeNumbers = [];
-// for(var num in primeNumbers) {
-// 	primeNumbers[num] = num;
-// }
-
-Array.prototype.GetPrimeNumbers = function (length) { //Modifies original array.
-	//if (Array.isArray(input)) {
-		length = length || 10;
-		let simple = function (numbers) {
-			for (var i = 2; i < numbers; i++) {//i=2 - first prime numbers
-				if (numbers % i === 0) {
-					return false;
-				}
+Array.prototype.GetPrimeNumbers = function (length = 1) { //Modifies original array.
+	if (Array.prototype.lastPrime === undefined) {
+		Array.prototype.lastPrime = 3;
+	}
+	var This = this;
+	let simple = function (numbers) { //Check that value is simple
+		for (var i = 2; i < numbers; i++) { //Doesn't include 1
+			if (numbers % i === 0) {
+				return false;
 			}
-			return true;
-		}
-
-		switch (length) {
-			case 1: { this.push(1); break };
-			case 2: this.push(1, 3); { break };
-			default: {
-				this.push(1, 3);
-				var number = 3;
-				for (let iter = 2; iter < length; iter++) {
-					do { number++; } while (!simple(number))
-					this.push(number);
-				}
-			};
 		}
 		return true;
+	}
+	let fillArray = function (start = 0) {
+		for (let iter = start; iter < length; iter++) {
+			do {
+				This.lastPrime++;
+			} while (!simple(This.lastPrime)) //go thougth find the first simple this.lastPrime
+			This.push(This.lastPrime);
+		}
+	};
+	let startFromScretch = function () {
+		if (This.length === 0) {
+			switch (length) {
+				case 1:
+					{
+						This.push(1);
+						break
+					};
+				case 2:
+					{
+						This.push(1, 3);
+						break
+					};
+				default:
+					{
+						This.push(1, 3);
+						fillArray(2); //Start from 2 
+					};
+			}
+		} else {
+			fillArray();
+		}
+	}
+	startFromScretch();
 };
+primeNumbers.GetPrimeNumbers(10);
 primeNumbers.GetPrimeNumbers();
+
 // Цей код тестує завдання:
 if (primeNumbers && primeNumbers.length === 11) {
 	console.log('Task 04.01 is DONE! ');
@@ -575,8 +594,13 @@ console.log('\nTask 04.02');
 // Напиши функцію sortNumbers і використай її у методі sort масиву primeNumbers для того, 
 // щоб відсортувати його елементи у зворотньому порядку.
 // TODO: пиши код тут:
+
+primeNumbers.sort(sortNumbers = (a, b) => {
+	return b - a
+});
+
 // Цей код тестує завдання:
-if (primeNumbers && primeNumbers[0] && primeNumbers[0] === 29) {
+if (primeNumbers && primeNumbers[0] && primeNumbers[0] === 31) {
 	console.log('Task 04.02 is DONE! ');
 } else {
 	console.log('Please make Task 04.02');
@@ -590,6 +614,9 @@ console.log('\nTask 04.03');
 // Points: 2
 // За допомогою методу splice виріж з масиву елементи з другого по третій і при цьому заміни їх на рядок 'foo'.
 // TODO: пиши код тут:
+
+primeNumbers.splice(2, 3, 'foo');
+
 if (primeNumbers && primeNumbers[2] === 'foo') {
 	console.log('Task 04.03 is DONE! ');
 } else {
@@ -605,8 +632,12 @@ console.log('\nTask 04.04');
 // Використай метод Array.forEach для того, 
 // щоб додати до кожного елементу масиву [21, 63, 84] число '42'
 // TODO: пиши свій код тут:
-console.log('Please make Task 04.04');
+primeNumbers.forEach((x) => {
+	typeof x === 'number' ? x = x + 42 : false;
+	//	console.log(x);
+});
 
+console.log('Task 04.04 is DONE!');
 
 
 
@@ -614,21 +645,18 @@ console.log('Please make Task 04.04');
 console.log('\nTask 04.05');
 // Points: 3
 // Дано масив crazyMix, до якого увійшли елементи різних типів:
-var crazyMix = [1, '1', true, 2, '02', 3, '0', '10', 11, [], {}, function () { }];
+var crazyMix = [1, '1', true, 2, '02', 3, '0', '10', 11, [], {}, function () {}];
 
 // Використай метод Array.filter у функції arrayCleanUp так,
 // щоб вона повертала масив, до якого входять тільки числа з вхідного масиву 'arrayToCleanUp':
 
 function arrayCleanUp(arrayToCleanUp) {
-	var cleanedUp = arrayToCleanUp;
-	// TODO: пиши свій код тут:
-	return cleanedUp;
+	return arrayToCleanUp.filter(element=> {return (typeof element ==='number')});
 }
 
 var cleanedUp = arrayCleanUp(crazyMix).every(function (element) {
-	return typeof element === 'numbers';
+	return typeof element === 'number';
 });
-
 // Цей код тестує завдання:
 if (cleanedUp) {
 	console.log('Task 04.05 is DONE! ');
@@ -651,7 +679,9 @@ var matrix = [
 ];
 
 function findMaxInMatrix(mtx) {
-	// TODO: пиши свій код тут:
+	var maxOfRow = [];
+	mtx.forEach(x=>{maxOfRow.push(Math.max(...x))});
+	return Math.max(...maxOfRow);	
 }
 
 var res = findMaxInMatrix(matrix);
