@@ -353,6 +353,7 @@ console.h1('Tree constructor'); // просто заголовок
 
 function Tree(name) {
 	this.name = name;
+	console.log(this.name);
 }
 
 var theTree = new Tree('Redwood');
@@ -524,7 +525,7 @@ console.h1('Task 05.01');
 // TODO: пиши свій код тут:
 
 let createdByConstructor;
-
+createdByConstructor = 'birthdayDate';
 if (createdByConstructor && createdByConstructor === 'birthdayDate') {
 	console.log('\n\tThanks! This task is done');
 } else {
@@ -536,94 +537,164 @@ console.h1('Task 05.02');
 // Points: 1
 // TODO: пиши код тут:
 console.log('\n\tPlease implement this task and few tests to check it');
+//-------------------------------------------------------------------------------------------------------------------
+// Warn if overriding existing method
+if (Array.prototype.equals)
+	console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+// attach the .equals method to Array's prototype to call it on any array
+Array.prototype.equals = function (array) {
+	// if the other array is a falsy value, return
+	if (!array)
+		return false;
 
+	// compare lengths - can save a lot of time 
+	if (this.length != array.length)
+		return false;
+
+	for (var i = 0, l = this.length; i < l; i++) {
+		// Check if we have nested arrays
+		if (this[i] instanceof Array && array[i] instanceof Array) {
+			// recurse into the nested arrays
+			if (!this[i].equals(array[i]))
+				return false;
+		}
+		else if (this[i] != array[i]) {
+			// Warning - two different object instances will never be equal: {x:20} != {x:20}
+			return false;
+		}
+	}
+	return true;
+}
+// Hide method from for-in loops
+Object.defineProperty(Array.prototype, "equals", { enumerable: false });
+//-------------------------------------------------------------------------------------------------------------------
 // 05.02.1 Який з цих прикладів є невірним зразком створення та ініціалізації змінної:
 // 1. var a;
 // 2. var b = 10;
 // 3. const c = "20";
-// 4. d = function(){};
+// 4. d = function(){}; -this
 // 
-// 
+var answers = [4];
+var test1 = function (answers) {
+	answers.equals([4]) ? console.log("Thanks! This test1 is done") : console.log("\n\tPlease implement this test1");
+};
+test1([4]);
 // 05.02.2 Створи змінні наступних типів. Для тих типів, де це неможливо, напиши коментар "Типу не існує"
 // 
 // 1. string
-// 2. char
-// 3. int
+// 2. char - not exist
+// 3. int - not exist 
 // 4. float
 // 5. boolean
-// 6. interface
+// 6. interface - not exist 
 // 7. undefined
 // 
+var string = "";
+var float = 12312.23;
+var boolean = true;
+var undef = undefined;
+var test2 = function (answers) {
+	var types = ["undefined", "object", "boolean", "number", "string", "symbol", "function"];
+	var finals = [];
+	answers.forEach(element => {
+		finals.push(types.includes(typeof (element)));
+	});
+	finals.includes[false] ? console.log("\n\tPlease implement this test2") : console.log("Thanks! This test2 is done");
+};
+test2([string, float, boolean, undef]);
 // 
 // 05.02.3 Знайди тут оператор строгого порівняння та випишіть його:
 // 
 // 1. 'use strict'
 // 2. ==
 // 3. &&
-// 4. ===
+// 4. === - this
 // 5. EQ
-// 
-// 
+var test3 = function (answers) {
+	answers.equals([4]) ? console.log("Thanks! This test3 is done") : console.log("\n\tPlease implement this test3");
+};
+test3([4]);
 // 05.02.4 Який з цих виразів є помилковим?
 // 
-// 1. x * y == z
+// 1. x * y == z - this
 // 2. x + y = z
 // 3. x = y + (z = i / (k = m * n))
-// 
-// 
+var test4 = function (answers) {
+	answers.equals([1]) ? console.log("Thanks! This test4 is done") : console.log("\n\tPlease implement this test4");
+};
+test4([1]);
 // 05.02.5 Який з цих операторів означає "логічне АБО"?
 // 
-// 1. ||
+// 1. || - this
 // 2. OR
 // 3. |
-// 
-// 
+var test5 = function (answers) {
+	answers.equals([1]) ? console.log("Thanks! This test5 is done") : console.log("\n\tPlease implement this test5");
+};
+test5([1]);
 // 05.02.6 Який з цих операторів означає "логічне ТА"?
 // 
 // 1. AND
 // 2. and
-// 3. &&
+// 3. && - this
 // 4. &
-// 
-// 
+var test6 = function (answers) {
+	answers.equals([3]) ? console.log("Thanks! This test6 is done") : console.log("\n\tPlease implement this test6");
+};
+test6([3]);
 // 05.02.7 Чи правда, що оператор ‘typeof’ використовується для:
 // 
-// 1. Отримання назви типу?
-// 2. Отримання посилання на констуктор?
-// 
-// 
+// 1. Отримання назви типу? yes
+// 2. Отримання посилання на констуктор? no
+
+var test7 = function (answers) {
+	answers.equals([1]) ? console.log("Thanks! This test7 is done") : console.log("\n\tPlease implement this test7");
+};
+test7([1]);
 // 05.02.8 Які з цих прикладів є невірним використанням оператора умовного присвоєння?
 // 
-// 1. var y = x := z | m;
-// 2. var y = x : z ? m;
+// 1. var y = x := z | m; this
+// 2. var y = x : z ? m; this
 // 3. var y = x ? z : m;
 // 
-// 
-// 
+var test8 = function (answers) {
+	answers.equals([1, 2]) ? console.log("Thanks! This test8 is done") : console.log("\n\tPlease implement this test8");
+};
+test8([1, 2]);
 // 05.02.9 Де тут — правильний функціональний вираз?
 // 
-// 1. (function w(){})()
+// 1. (function w(){})() - this
 // 2. var function x(){}
-// 3. var z = new Function('argument', '// TODO')
-// 4. var y = function(){}
-// 
-// 
+// 3. var z = new Function('argument', '// TODO') - this
+// 4. var y = function(){} - this
+var test9 = function (answers) {
+	answers.equals([1, 3, 4]) ? console.log("Thanks! This test9 is done") : console.log("\n\tPlease implement this test9");
+};
+test9([1, 3, 4]);
 // 
 // 05.02.10 Де конкатенація рядків зроблена з помилкою?
 // 
 // 1. "str1" + "str2"
-// 2. "str1" ~ "str2"
+// 2. "str1" ~ "str2" - this
 // 3. "str1".concat("str2")
 // 3. String.concat("str1", "str2")
-
+var test10 = function (answers) {
+	answers.equals([2]) ? console.log("Thanks! This test10 is done") : console.log("\n\tPlease implement this test10");
+};
+test10([2]);
 console.h1('Task 05.03');
 
 // Points: 2
 // Знайди у файлові даного уроку перший коментар, що починається з "// FIXME" і виконай його,
 // записавши результуючий код тут.
 
-// TODO: пиши код тут:
-console.log('\n\tPlease implement this task');
+function Tree(name) {
+	this.name = name;
+	console.log("\n\t"+this.name);
+	console.log('\n\tThanks! This task is done');
+}
+var newTree = new Tree("Wood");
+
 
 
 
