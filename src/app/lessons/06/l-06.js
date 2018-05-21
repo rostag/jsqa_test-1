@@ -349,8 +349,16 @@ const glo = 'glo site';
 	// Визнач двома способами (як функціональний вираз та як оголошення функції)
 	// функцію cube, що приймає один числовий параметр і повертає куб від цього числа.
 	// TODO: пишіть свій код тут:
+	function cube(num) {
+		console.log('\nThis task is Done');
+		return Math.pow(num, 4);
+	}
+	var cube = function (num) {
+		console.log('\nThis task is Done');
+		return Math.pow(num, 4);
+	}
 
-	console.log('\nPlease implement this task');
+	console.log(cube(2));
 
 
 
@@ -362,7 +370,7 @@ const glo = 'glo site';
 	// Спробуй відповісти, не запускаючи код на виконнання: що код виведе у консоль?
 	// TODO: пиши відповідь тут:
 
-	console.log('\nPlease implement this task');
+
 
 	var global1 = 'global1';
 	var global2 = 'global2';
@@ -376,8 +384,8 @@ const glo = 'glo site';
 	function1();
 
 	console.log('log from global scope: \n', global1, '\n', global2);
-
-
+	console.log("Answer:\n" + "LOCAL1\n" + "LOCAL2\n" + "global1\n" + "LOCAL2\n");
+	console.log('\nThis task is Done');
 
 
 
@@ -392,18 +400,21 @@ const glo = 'glo site';
 	// Перепиши код function1 з попереднього завдання таким чином, щоб _другий_ вивід
 	// з консолі показував LOCAL1 замість global1
 
-	// TODO: код тут:
+	var global1 = 'global1';
+	var global2 = 'global2';
 
-	console.log('\nPlease implement this task');
+	var function1 = function () {
+		global1 = 'LOCAL1';
+		global2 = 'LOCAL2';
+		console.log('log from function scope: \n', global1, '\n', global2);
+	};
+
+	function1();
+
+	console.log('log from global scope: \n', global1, '\n', global2);
 
 
-
-
-
-
-
-
-
+	console.log('\nThis task is Done');
 
 	console.log('\nTask 06.04');
 	// Points: 2
@@ -412,8 +423,20 @@ const glo = 'glo site';
 	// з консолі показував global2 замість LOCAL2
 
 	// TODO: код тут:
+	var global1 = 'global1';
+	var global2 = 'global2';
 
-	console.log('\nPlease implement this task');
+	var function1 = function () {
+		var global1 = 'LOCAL1';
+		var global2 = 'LOCAL2';
+		console.log('log from function scope: \n', global1, '\n', global2);
+	};
+
+	function1();
+
+	console.log('log from global scope: \n', global1, '\n', global2);
+
+	console.log('\nThis task is Done');
 
 
 
@@ -433,11 +456,15 @@ const glo = 'glo site';
 
 	// TODO: пишіть свій код тут:
 
-	console.log('\nPlease implement this task');
+	
 
-
-
-
+	var blackBox = function (hidden) {
+		return  (function insider() {
+			return hidden;
+		})();
+	};
+	console.log(blackBox('secret'));
+	
+	console.log('\nThis task is Done');
 	console.log('\nLesson 06 - Homework End');
-
 })();
