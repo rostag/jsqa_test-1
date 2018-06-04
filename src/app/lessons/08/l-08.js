@@ -408,7 +408,7 @@
     // Домашня робота
     //
 
-    console.h1('\nLesson 08 - Homework');
+    console.h1('Lesson 08 - Homework');
 
     console.log('\nTask 08.01');
     // Points: 2
@@ -436,6 +436,6 @@
 
     console.log('Please implement this task');    
 
-    console.h1('\nLesson 08 - Homework End');
+    console.h1('Lesson 08 - Homework End');
 
 })();
