@@ -6,7 +6,7 @@
  *  - DOM, BOM
  *  - JSON
  * 
- *  node src/app/lessons/l-08/l-08.js
+ *  node src/app/lessons/08/l-08.js
  */
 
 'use strict';
@@ -416,10 +416,15 @@
     // передавши анонімну функцію в якості параметра.
     // TODO: пиши тут:
 
+    console.log('Please implement this task');
+
     console.log('\nTask 08.02');
     // Points: 2
     // Напиши функцію useAnonymousCallback, що приймає параметр callback, і виклич її, 
     // передавши їй в якості параметра іменовану функцію.
+
+    console.log('Please implement this task');
+    
 
     console.log('\nTask 08.03');
     // Points: 3
@@ -428,6 +433,8 @@
     // Напиши код, що використовує цю конструкцію для того, щоб вивести у консоль
     // значення змінної enclosed через замикання.
     // TODO: пиши тут:
+
+    console.log('Please implement this task');    
 
     console.h1('\nLesson 08 - Homework End');
 
