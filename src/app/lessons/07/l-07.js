@@ -262,7 +262,7 @@
 	//
 
 	console.log('\nTask 07.01');
-	console.log('\n\t Please implement this task');
+	console.log('\n\t Done');
 
 	// Points: 1
 	// Чи є замиканнями обидві наведені нижче функції? Чому?
@@ -272,74 +272,40 @@
 
 	function func1() {
 		var var1;
-		return function func1InternalFunc() {}
+		return function func1InternalFunc() {};
 	}
 
 	// TODO: дай відповідь тут:
-
+    //Yes, second one.
 	console.log('\nTask 07.02');
-	console.log('\n\t Please implement this task');
+	console.log('\n\t Done');
 
 	// Points: 1
 	// Напиши функцію-замикання -- будь-яку.
 	// TODO: пиши код тут:
 
-	function sillyClosure() {
-		return this;
+	function pow(one) {
+		return () =>{return one*one};
 	}
 
-	console.log(sillyClosure())
+	console.log(pow(4)());
 
 	console.log('\nTask 07.03');
-	console.log('\n\t Please implement this task');
+	console.log('\n\t Done');
 
 	// Points: 2
 	// Є замикання iAmClosure із внутрішньою змінною iAmEnclosed.
 	// Як можна отримати доступ до цієї змінної?
-	function iAmClosure() {
+	function iAmClosure(value) {
 		var iAmEnclosed = 'secret';
-		return false;
+		return value==undefined? iAmEnclosed:iAmEnclosed = value;
 	}
-
-	// TODO: пиши відповідь словами тут:
-	// WRONG 1:
-	function iAmClosureTwo() {
-		var iAmEnclosed = 'secret';
-		return iAmEnclosed; // 'secret'
-	}
-
-	console.log(iAmClosureTwo()) // 'secret'
-
-	// WRONG 2:
-	function iAmClosureThree() {
-		var iAmEnclosed = {
-			property: 'secret',
-			propertyAlso: 'also secret'
-		};
-		return iAmEnclosed;
-	}
-	// [[scope]] - створюється щоразу при виконанні функції
-	var disclosedInternal = iAmClosureThree();
-
-	// [[scope]] - створюється щоразу при виконанні функції
-	var brokenDisclosedInternal = iAmClosureThree();
-	// var brokenDisclosedInternal = disclosedInternal;
-
-	// READ
-	console.log(disclosedInternal);
-	console.log(brokenDisclosedInternal);
-
-	// WRITE -- OVERWRITTEN OBJECT
-	// BAD BAD BAD
-	disclosedInternal.property = 'secret2';
-
-	console.log(disclosedInternal);
-	console.log(brokenDisclosedInternal);
+   // Create function get and set
 
 
 
 	console.log('\nTask 07.04');
-	console.log('\n\t Please implement this task');
+	console.log('\n\t Done');
 
 	// Points: 2
 	// Напиши функцію, до внутрішньої змінної якої можна
@@ -347,21 +313,21 @@
 	// що повертається як функція-замикання.
 	// TODO: пиши тут:
 
-	function iAmClosureFour() {
+	function Closed() {
 		var iAmEnclosed = {
 			property: 'secret',
 			propertyAlso: 'also secret'
 		};
 
-		function accessEnclosed() {
+		function accessClosed() {
 			return iAmEnclosed
 		}
 
-		return accessEnclosed;
+		return accessClosed;
 	}
 
-	var accessEnclosed = iAmClosureFour();
-	var disclosedInternalFour = accessEnclosed();
+	var access = Closed();
+	var disclosedInternalFour = access();
 
 })();
 // Завершення глобальної анонімної функції
