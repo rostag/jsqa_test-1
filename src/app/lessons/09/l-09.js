@@ -210,10 +210,11 @@
     console.h1('Lesson 09 - Homework');
 
     console.h2('Task 09.01');
-    console.log('Please implement this task');
+    console.log('Done');
     // Points: 1
     // Вище у цьому файлі за допомогою функції JSQA_APP.namespace() глобальний об'єкт JSQA_APP наповнено внутрішніми просторами імен
     // Виведи у консоль значення об'єкта JSQA_APP і проаналізуй побачене. Чи розумієш ти, як утворилася такка структура?
+    console.log(JSQA_APP);
 
     console.h2('Task 09.02');
     console.log('Please implement this task');
@@ -223,6 +224,8 @@
     // Знову виведи у консоль значення об'єкта JSQA_APP і переконайся, що новий модуль з'явився у об'єкті
     // Tip: для зручності і краси, можна виводити так: 
     // console.log(JSON.stringify(JSQA_APP, null, '  '));
+    JSQA_APP.namespace("JSQA_APP.modules.mainModule");
+    console.log(JSQA_APP);
 
     console.h2('Task 09.03');
     console.log('Please implement this task');
@@ -230,12 +233,29 @@
     // Користуючись прикладом шаблону "Приватні властивості і методи" вище, створи новий об'єкт student з приватною властивіcтю id,
     // що буде доступною тільки для читання через публічний метод getId()
 
+    let student = (function () {
+        let id = "private";
+        return {
+            getId: () => {
+                return id;
+            }
+        };
+    }());
+    console.log(student.getId());
+
+
     console.h2('Task 09.04');
-    console.log('Please implement this task');
+    console.log('Done');
     // Points: 4
     // Користуючись прикладом шаблону "Модуль" вище, додай до об'єкта student приватний метод analyzeHomeworkTask(homework_id),
     // що буде доступний через публічний метод doHomework(homework_id)
-
+    student.doHomework = (homework_id) => {
+        (function () {
+            let analyzeHomeworkTask = (homework_id) => (console.log(homework_id));
+            return analyzeHomeworkTask(homework_id);
+        }());
+    };
+    student.doHomework("My Home Work");
     console.h1('Lesson 09 - Homework End');
 
 })();
