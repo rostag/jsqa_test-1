@@ -63,6 +63,6 @@ console.h2('Homework Task 11.05');
 // Points: 4
 // Create a new Course module in a file named src/app/course/index.js
 // Define a private property in it named startDate and give it initial value: new Date('May 7, 2018 00:00:00');
-// Define a getStartDate method on it and export it like shown in the Lesson 11 video
+// Define a getStartDate method on it and export it
 // Create a main applicaton module in the src/app/app.js file
 // Import the Course as a module into app module and print the Course start date to the console
