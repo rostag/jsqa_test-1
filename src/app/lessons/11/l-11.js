@@ -39,7 +39,12 @@ console.h2('Homework Task 11.01');
 // Points: 1
 // We have an object named 'ukraine':
 const Ukraine = {};
-
+Object.defineProperty(Ukraine, 'birthDate', {
+  value: new Date('August 24, 1991 00:00:00'),
+  writable: false,
+  configurable: false
+});
+console.log(Ukraine.birthDate);
 // Using Object.defineProperty method, define a new Ukraine property named 'birthDate',
 // which is enumerable, but not configurable and it's value cannot be changed.
 // Initial value of the property should be:
@@ -50,15 +55,25 @@ console.h2('Homework Task 11.02');
 // Using Object.defineProperty method, define a new Ukraine property named 'president',
 // which is enumerable, configurable, and writable.
 // Initial value of the property should be 'Kravchuk'.
-
+Object.defineProperty(Ukraine, 'president', {
+  value:"Kravchuk",
+  writable: true,
+  configurable: true,
+  enumerable:true
+});
 console.h2('Homework Task 11.03');
 // Points: 2
 // Print the properties of the Ukraine to console object using a for...in loop
-
+for (var prop in Ukraine) {
+  console.log(prop,"\n");
+}
 console.h2('Homework Task 11.04');
 // Points: 3
 // Print the properties of the Ukraine to console object using a for loop, Object.keys and Object.values
-
+for (var key = 0; key<Object.keys(Ukraine).length;key++) {
+ // console.log(Object.keys(Ukraine)[key],":",Object.values(Ukraine)[key]); //TODO Why this not working?
+ console.log(Object.keys(Ukraine)[key],":",Ukraine[Object.keys(Ukraine)[key]]);
+}
 console.h2('Homework Task 11.05');
 // Points: 4
 // Create a new Course module in a file named src/app/course/index.js
